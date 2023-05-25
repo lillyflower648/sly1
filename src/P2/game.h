@@ -3,7 +3,7 @@
 
 /* Object IDs
  There are a lot more that are unknown. */
-enum class OID : int
+enum OID
 {
 	Unknown = 0x0,
 	_MERGED_STATICS = 0x1,

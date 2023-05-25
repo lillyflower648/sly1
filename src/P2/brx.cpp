@@ -17,3 +17,8 @@ int IploFromStockOid(int oid)
 
 	return uVar1;
 }
+
+void LoadSwObjectsFromBrx(SW* psw, ALO* paloParent, CBinaryInputStream* pbis)
+{
+
+}

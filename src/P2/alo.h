@@ -1,13 +1,15 @@
+#include <dl.h>
+#include <lo.h>
 
 struct ALO {
-    //struct LO field0_0x0;
-    //struct DL dlChild;
-    //struct DLE dleBusy;
-    //struct DLE dleMRD;
-    //struct ALO* paloRoot;
+    struct LO field0_0x0;
+    struct DL dlChild;
+    struct DLE dleBusy;
+    struct DLE dleMRD;
+    struct ALO* paloRoot;
     struct ALO* paloFreezeRoot;
-    //struct DLE dleFreeze;
-    //struct DL dlFreeze;
+    struct DLE dleFreeze;
+    struct DL dlFreeze;
     int cpmrg;
     struct MRG* apmrg[4];
     float sMRD;
@@ -19,7 +21,7 @@ struct ALO {
     //struct VECTOR posOrig;
     //struct MATRIX3 matOrig;
     //struct VECTOR eulOrig;
-    //struct DL dlAct;
+    struct DL dlAct;
     struct ACT* pactPos;
     struct ACT* pactRot;
     struct ACT* pactScale;
