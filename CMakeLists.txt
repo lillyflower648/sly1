@@ -12,7 +12,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_subdirectory(src)
 
-add_executable(${ELF_TARGET} ${P2_SOURCE_DIR}/main.cpp "src/frzg.h")
+add_executable(${ELF_TARGET} ${P2_SOURCE_DIR}/main.cpp)
 target_link_libraries(${ELF_TARGET} PUBLIC P2)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/tests)

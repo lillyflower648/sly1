@@ -1,10 +1,8 @@
 #pragma once
 #include <bas.h>
 #include <cat.h>
-#include <prog.h>
-#include <iostream>
 #include <fstream>
-#include <stdint.h>
+#include <iostream>
 
 typedef unsigned char byte;
 

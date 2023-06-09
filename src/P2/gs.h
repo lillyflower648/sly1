@@ -128,5 +128,5 @@ extern LS* g_plsCur;
 extern PchzLevel pchzLevelTable[];
 
 void PopulatePchzLevelTable();
-int FGameCompletion();
-int CalculatePercentCompletion(GS* pgs);
+int  FGameCompletion();
+int  CalculatePercentCompletion(GS* pgs);

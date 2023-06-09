@@ -12,7 +12,6 @@
 #include <mpeg.h>
 #include <wipe.h>
 #include <spliceutils.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -34,11 +33,11 @@ int main(int cphzArgs, char* aphzArgs[])
 			//FlushFrames(1); // todo implement
 			g_mpeg.ExecuteOids();
 		}
-		
+
 		// Check if g_transition has a pending transition
 		if (g_transition.m_fPending != 0)
 		{
-			//FlushFrames(1); // todo implement
+			//FlushFrames(1); // // todo implement
 			g_transition.Execute();
 		}
 

@@ -1,6 +1,8 @@
 #pragma once
+#include <dl.h>
 #include <util.h>
-#include <cstdint>
+#include <vec.h>
+#include <iostream>
 
 struct EASND {
     uint16_t csfxid;
@@ -485,7 +487,89 @@ enum class MVGK {
 };
 
 struct ISI {
-    enum SFXID sfxid;
+    enum   SFXID sfxid;
     struct LM lmRepeat;
     struct LM lmRepDist;
+};
+
+enum MUSID {
+    MUSID_Nil = -1,
+    MUSID_Mustest = 0,
+    MUSID_Ashif01 = 1,
+    MUSID_Ashif02 = 2,
+    MUSID_Lavalair = 3,
+    MUSID_Gunboat = 4,
+    MUSID_Crnkshft = 5,
+    MUSID_Grovtest = 6,
+    MUSID_Outmug = 7,
+    MUSID_Extmug = 8,
+    MUSID_Outral = 9,
+    MUSID_Hubral = 10,
+    MUSID_Libral = 11,
+    MUSID_Secral = 12,
+    MUSID_Crabcave = 13,
+    MUSID_Ralboss = 14,
+    MUSID_JB_Intro = 15,
+    MUSID_Max = 16
+};
+
+struct AMB {
+    SFXID sfxid;
+    int iSerial;
+    void* bnk;
+    AMB** ppamb;
+    float tStarted;
+    float uVolAtSource;
+    uint32_t sfxh;
+    VECTOR pos;
+    ALO* palo;
+    float sStart;
+    float sFull;
+    int fContinuous;
+    int fOutOfRange;
+    int fAttached;
+    int fStopped;
+    float volAttenuated;
+    float pan;
+    float frq;
+    float rDoppler;
+    int dnDoppler;
+    DLE dle;
+    int fPtchOrig;
+    int ptchOrig;
+    float tNext;
+    LM lmRepeat;
+    LM lmRepDist;
+};
+
+struct SFX {
+    enum SFXID sfxid;
+    float sStart;
+    float sFull;
+    float uVol;
+    float uPitch;
+    struct LM lmRepeat;
+    struct AMB* pamb;
+    float uDoppler;
+};
+
+enum REVERBK {
+    REVERBK_Nil = -1,
+    REVERBK_None = 0,
+    REVERBK_StudioA = 1,
+    REVERBK_StudioB = 2,
+    REVERBK_StudioC = 3,
+    REVERBK_Pipe = 4,
+    REVERBK_Room = 5,
+    REVERBK_Max = 6
+};
+
+struct RSE {
+    enum REVERBK rvrbk;
+    int depth;
+};
+
+struct EXC {
+    int iexc;
+    DLE dle;
 };

@@ -1,96 +1,169 @@
 #pragma once
-#include <zap.h>
-#include <util.h>
-#include <iostream>
+#include <alo.h>
+#include <bis.h>
+#include <bsp.h>
+#include <geom.h>
 
-typedef int GRFPVA;
+// SO could mean static object
 
-// todo: rewrite struct
-struct SO 
+enum CT
 {
-    char padding[0x2e0];
-    //DLE dleRoot;
-    //DL dlPhys;
-    //DLE dlePhys;
-    //struct VECTOR_153 dvGravity;
+    CT_Tangent = 1,
+    CT_Free = 0,
+    CT_Project = 2,
+    CT_Locked = 3
+};
+
+struct CONSTR
+{
+    VECTOR normal;
+    CT ct;
+};
+
+struct SOP {
+    LO* plo;
+    int cpar;
+    struct PAR* apar;
+    SOP* psopNext;
+};
+
+struct SO {
+    struct ALO SO;
+    struct DLE dleRoot;
+    struct DL dlPhys;
+    struct DLE dlePhys;
+    struct MATRIX3 momintLocal;
+    struct MATRIX3 momintInvLocal;
+    struct VECTOR dvGravity;
     float gBuoyancy;
     float gViscosity;
     float m;
-    undefined4 field_0x37c;
-    //struct VECTOR_153 posWorldPrev;
-    //struct GEOM_153 geomLocal;
-    //struct GEOM_153 geomWorld;
-    struct LVO_153* plvo;
+    struct VECTOR posWorldPrev;
+    struct GEOM geomLocal;
+    struct GEOM geomWorld;
+    struct LVO* plvo;
     float sRadiusSelf;
     float sRadiusAll;
     float sRadiusPrune;
-    byte field_0x3f8;
-    byte field_0x3f9;
-    byte field_0x3fa;
-    byte field_0x3fb;
-    byte field_0x3fc;
-    byte field_0x3fd;
-    byte field_0x3fe;
-    byte field_0x3ff;
-    //struct VECTOR_153 posPrune;
-    //struct BSPC_153 bspc;
+    struct VECTOR posPrune;
+    struct BSPC bspc;
     int cnpg;
-    struct NPG_153* anpg;
+    struct NPG* anpg;
     int* mpibspinpg;
     int chsg;
-    struct HSG_153* ahsg;
+    struct HSG* ahsg;
     int* mpisurfihsgMic;
-    //DLE dleBusySo;
-    //struct VECTOR_153 posMin;
-    //struct VECTOR_153 posMax;
-    //struct CONSTR_153 constrForce;
-    byte field_0x471;
-    byte field_0x472;
-    byte field_0x473;
-    byte field_0x474;
-    byte field_0x475;
-    byte field_0x476;
-    byte field_0x477;
-    byte field_0x478;
-    byte field_0x479;
-    byte field_0x47a;
-    byte field_0x47b;
-    byte field_0x47c;
-    byte field_0x47d;
-    byte field_0x47e;
-    byte field_0x47f;
-    //struct CONSTR_153 constrTorque;
-    byte field_0x491;
-    byte field_0x492;
-    byte field_0x493;
-    byte field_0x494;
-    byte field_0x495;
-    byte field_0x496;
-    byte field_0x497;
-    byte field_0x498;
-    byte field_0x499;
-    byte field_0x49a;
-    byte field_0x49b;
-    byte field_0x49c;
-    byte field_0x49d;
-    byte field_0x49e;
-    byte field_0x49f;
-    //struct OXA_153.conflict* poxa;
-    undefined4 field_0x4a4;
-    undefined4 field_0x4a8;
-    undefined4 field_0x4ac;
-    //struct VECTOR_153 dpos;
-    //struct VECTOR_153 drot;
-    //struct XA_153.conflict* pxa;
-    //struct XP_153.conflict* pxpInternal;
-    GRFPVA grfpvaXpValid;
+    struct DLE dleBusySo;
+    struct VECTOR posMin;
+    struct VECTOR posMax;
+    struct CONSTR constrForce;
+    struct CONSTR constrTorque;
+    struct OXA* poxa;
+    struct VECTOR dpos;
+    struct VECTOR drot;
+    struct XA* pxa;
+    struct XP* pxpInternal;
+    int grfpvaXpValid;
     int ipsoRoot;
     int ipso;
-    undefined4 field_0x4e4;
-    undefined4 field_0x4e8;
-    undefined4 field_0x4ec;
-    //struct VECTOR_153 posComLocal;
-    ZOK zok;
-    SO* psoPhysHook;
-    //struct GEOM_153 geomCameraLocal;
+    struct VECTOR posComLocal;
+    enum ZOK zok;
+    struct SO* psoPhysHook;
+    struct GEOM geomCameraLocal;
+    struct GEOM geomCameraWorld;
+    struct BSPC bspcCamera;
+    struct STSO* pstso;
 };
+
+struct STSO {
+    SO* psoTouch;
+    STSO* pstsoNext;
+};
+
+void InitSo(SO* pso);
+void OnSoAdd(SO* pso);
+void OnSoRemove(SO* pso);
+//void SendSoMessage(SO* pso, MSGID msgid, void* pv);
+void LoadSoFromBrx(SO* pso, CBinaryInputStream* pbis);
+
+struct VTSO {
+    struct VT* pvtSuper = g_vtalo.pvtSuper;
+    CID cid = CID::SO;
+    int grfcid = 3;
+    int cb = 0x580;
+    /*undefined1* pfnInitSo;
+    undefined1* pfnSetLoDefaults;
+    undefined1* pfnAddLo;
+    undefined1* pfnRemoveLo;
+    undefined1* pfnAddAloHierarchy;
+    undefined1* pfnRemoveAloHierarchy;
+    undefined1* pfnOnSoAdd;
+    undefined1* pfnOnSoRemove;
+    undefined1* pfnCloneAloHierarchy;
+    undefined1* pfnCloneSo;
+    undefined1* pfnLoadSoFromBrx;
+    undefined1* pfnAddLoRecursive;
+    undefined1* pfnRemoveLoRecursive;
+    undefined1* pfnHandleAloMessage;
+    undefined1* pfnSendSoMessage;
+    undefined1* pfnBindAlo;
+    undefined1* pfnPostAloLoad;
+    undefined1* pfnUpdateSo;
+    undefined1* pfnUpdateSoXfWorld;
+    undefined1* pfnUpdateSoXfWorldHierarchy;
+    undefined1* pfnFreezeSo;
+    undefined1* pfnSetSoParent;
+    undefined1* pfnApplySoProxy;
+    undefined1* pfnSubscribeLoObject;
+    undefined1* pfnUnsubscribeLoObject;
+    undefined1* pfnSubscribeLoStruct;
+    undefined1* pfnUnsubscribeLoStruct;
+    undefined1* pfnGetSoParams;
+    undefined1* pfnUpdateLoLiveEdit;
+    undefined1* pfnProjectSoTransform;
+    undefined1* pfnPresetSoAccel;
+    undefined1* pfnTranslateSoToPos;
+    undefined1* pfnRotateSoToMat;
+    undefined1* pfnMatchAloOtherObject;
+    undefined1* pfnSetSoVelocityVec;
+    undefined1* pfnSetSoAngularVelocityVec;
+    undefined1* pfnPredictAloPosition;
+    undefined1* pfnPredictAloRotation;
+    undefined1* pfnRenderAloAll;
+    undefined1* pfnRenderSoSelf;
+    undefined1* pfnRenderAloGlobset;
+    undefined1* pfnUpdateAloInfluences;
+    undefined1* pfnAdjustAloPosition;
+    undefined1* pfnAdjustAloRotation;
+    undefined1* pfnUnadjustAloRotation;
+    undefined1* pfnRecacheAloActList;
+    undefined1* pfnUpdateAloConstraints;
+    undefined1* pfnFAbsorbSoWkr;
+    undefined1* pfnDisplaceSo;
+    undefined1* pfnImpactSo;
+    undefined1* pfnPivotSo;
+    undefined1* pfnUpdateSoBounds;
+    undefined1* pfnAddSoExternalAccelerations;
+    undefined1* pfnCloneSoPhys;
+    undefined1* pfnRenumberSo;
+    undefined1* pfnPropagateSoForce;
+    undefined1* pfnDistributeSoEffects;
+    undefined1* pfnFIgnoreSoIntersection;
+    undefined1* pfnAddSoXps;
+    undefined1* pfnAddSoCustomXps;
+    undefined1* pfnAdjustSoXpLocal;
+    undefined1* pfnAdjustSoNewXp;
+    undefined1* pfnAdjustSoXpVelocity;
+    undefined1* pfnAdjustSoDz;
+    undefined1* pfnAdjustSoXps;
+    undefined1* pfnUpdateSoInternalXps;
+    undefined1* pfnNotifySoImpact;
+    undefined1* pfnUpdateSoPivots;
+    undefined1* pfnUpdateSoImpacts;
+    undefined1* pfnUpdateSoPosWorldPrev;
+    undefined1* pfnGetSoCpdefi;
+    undefined1* pfnAddSoWaterAcceleration;
+    undefined1* pfnFInflictSoZap;*/
+};
+
+extern VTSO g_vtso;

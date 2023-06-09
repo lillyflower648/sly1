@@ -1,11 +1,6 @@
 #pragma once
-#include <dialog.h>
-#include <game.h>
-#include <joy.h>
 #include <keyhole.h>
-#include <sw.h>
 #include <transition.h>
-#include <wm.h>
 
 typedef unsigned char byte;
 
@@ -38,12 +33,7 @@ struct WIPE
     WIPEK wipekButton;
 };
 
-static KEYHOLE* g_pkeyhole;
-static DIALOG* g_pdialogCalling;
-static WM g_wmc;
-static TRANS trans; // ?
-
-static WIPE g_wipe;
+static WIPE  g_wipe;
 extern WIPE* g_pwipe;
 
 void WipeToWorldWarp(LevelTableStruct* pchzWorld, OID oidWarp, WIPEK wipek);
@@ -52,5 +42,5 @@ void SetWipeWipes(WIPE* pwipe, WIPES wipes);
 void DrawWipe(WIPE* pwipe);
 void UpdateWipe(WIPE* pwipe, JOY* pjoy);
 void InitWipe(WIPE* pwipe);
-void SetWipeButtonTrans(WIPE* param_1, TRANS* param_2, WIPEK param_3);
+void SetWipeButtonTrans(WIPE* pwipe, TRANS* ptrans, WIPEK wipek);
 int  FCatchWipeButtonTrans(WIPE* pwipe, JOY* pjoy, WIPES wipesNew);

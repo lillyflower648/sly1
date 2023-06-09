@@ -41,7 +41,7 @@ void CTransition::Execute()
     LevelTableStruct levelInfo{};
     
     SetPhase(PHASE::Load);
-    if (levelInfo.fileLocation.m_fcl.cb != 0)
+    if (levelInfo.fileLocation.m_fcl.cb == 0)
     {
         fileLocation.Clear();
 
@@ -49,7 +49,7 @@ void CTransition::Execute()
         fileLocation.m_fcl.cb = levelInfo.fileLocation.m_fcl.cb ^ levelInfo.level_name;
         fileLocation.m_fcl.isector = levelInfo.fileLocation.m_fcl.isector ^ levelInfo.for_size;
 
-        if (fileLocation.m_fcl.cb == 0)
+        if (fileLocation.m_fcl.cb != 0)
         {
             //FUN_001C06D8();
             //SetMvgkRvol();//
@@ -64,8 +64,9 @@ void CTransition::Execute()
         ResetClock(&g_clock, 0.0);
         AddGrfusr(0x80);
         //SetupGame(levelInfo.level_id);
-        g_psw = PloNew(CID::CID_SW, 0, 0, OID::_WORLD, -1);
+        g_psw = PloNew(CID::SW, 0, 0, OID::WORLD, -1);
         
+
+        // Gotta finsh the PloNew function before i can finish the statement below
     }
 }
-

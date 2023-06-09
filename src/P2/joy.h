@@ -141,7 +141,9 @@ enum class FCHT : int
 	LowGravity = 0x4,
 	LowFriction = 0x8,
 	ResetWorld = 0x4000
-};enum DPK
+};
+
+enum DPK
 {
     None = 0,
     X = 1,

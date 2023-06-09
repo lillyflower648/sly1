@@ -129,18 +129,18 @@ void OnDifficultyPlayerDeath(float scalar, DIFFICULTY* pdifficulty)
 }
 
 /* Reduce player suck upon first triggering a checkpoint */
-void OnDifficultyTriggerCheckpoint(DIFFICULTY* pdifficulty, CHKPNT* pchkpnt)
-{
-	DIFFICULTYLEVEL* pdifflevel;
-
-	if (pchkpnt == NULL)
-	{
-		pdifflevel = pdifficulty->pdifficultyLevel;
-	}
-
-	/* todo: implement CHKPNT struct and finish this function */
-	// ...
-}
+//void OnDifficultyTriggerCheckpoint(DIFFICULTY* pdifficulty, CHKPNT* pchkpnt)
+//{
+//	DIFFICULTYLEVEL* pdifflevel;
+//
+//	if (pchkpnt == NULL)
+//	{
+//		pdifflevel = pdifficulty->pdifficultyLevel;
+//	}
+//
+//	/* todo: implement CHKPNT struct and finish this function */
+//	// ...
+//}
 
 /* Resets some difficulty values upon collecting a key */
 void OnDifficultyCollectKey(DIFFICULTY* pdifficulty)

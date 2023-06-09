@@ -1,0 +1,107 @@
+#pragma once
+#include <coin.h>
+#include <so.h>
+
+struct PO {
+    SO PO;
+    int fPlayable;
+    int fLockBase;
+    VECTOR posBasePrev;
+    float tWakeRipple;
+    AMB* pambWake;
+    PZI pzi;
+    ALO* paloUseCharm;
+};
+
+struct VTPO {
+    struct VT* pvtSuper = g_vtso.pvtSuper;
+    enum CID cid = CID::PO;
+    int grfcid = 11;
+    int cb = 0x5D0;
+    /*undefined1* pfnInitPo;
+    undefined1* pfnSetLoDefaults;
+    undefined1* pfnAddLo;
+    undefined1* pfnRemoveLo;
+    undefined1* pfnAddAloHierarchy;
+    undefined1* pfnRemoveAloHierarchy;
+    undefined1* pfnOnPoAdd;
+    undefined1* pfnOnPoRemove;
+    undefined1* pfnCloneAloHierarchy;
+    undefined1* pfnClonePo;
+    undefined1* pfnLoadSoFromBrx;
+    undefined1* pfnAddLoRecursive;
+    undefined1* pfnRemoveLoRecursive;
+    undefined1* pfnHandlePoMessage;
+    undefined1* pfnSendSoMessage;
+    undefined1* pfnBindAlo;
+    undefined1* pfnPostAloLoad;
+    undefined1* pfnUpdatePo;
+    undefined1* pfnUpdateSoXfWorld;
+    undefined1* pfnUpdateSoXfWorldHierarchy;
+    undefined1* pfnFreezeSo;
+    undefined1* pfnSetSoParent;
+    undefined1* pfnApplySoProxy;
+    undefined1* pfnSubscribeLoObject;
+    undefined1* pfnUnsubscribeLoObject;
+    undefined1* pfnSubscribeLoStruct;
+    undefined1* pfnUnsubscribeLoStruct;
+    undefined1* pfnGetSoParams;
+    undefined1* pfnUpdateLoLiveEdit;
+    undefined1* pfnProjectSoTransform;
+    undefined1* pfnPresetSoAccel;
+    undefined1* pfnTranslateSoToPos;
+    undefined1* pfnRotateSoToMat;
+    undefined1* pfnMatchAloOtherObject;
+    undefined1* pfnSetSoVelocityVec;
+    undefined1* pfnSetSoAngularVelocityVec;
+    undefined1* pfnPredictAloPosition;
+    undefined1* pfnPredictAloRotation;
+    undefined1* pfnRenderAloAll;
+    undefined1* pfnRenderSoSelf;
+    undefined1* pfnRenderAloGlobset;
+    undefined1* pfnUpdateAloInfluences;
+    undefined1* pfnAdjustAloPosition;
+    undefined1* pfnAdjustAloRotation;
+    undefined1* pfnUnadjustAloRotation;
+    undefined1* pfnRecacheAloActList;
+    undefined1* pfnUpdateAloConstraints;
+    undefined1* pfnFAbsorbSoWkr;
+    undefined1* pfnDisplaceSo;
+    undefined1* pfnImpactSo;
+    undefined1* pfnPivotSo;
+    undefined1* pfnUpdateSoBounds;
+    undefined1* pfnAddSoExternalAccelerations;
+    undefined1* pfnCloneSoPhys;
+    undefined1* pfnRenumberSo;
+    undefined1* pfnPropagateSoForce;
+    undefined1* pfnDistributeSoEffects;
+    undefined1* pfnFIgnoreSoIntersection;
+    undefined1* pfnAddSoXps;
+    undefined1* pfnAddSoCustomXps;
+    undefined1* pfnAdjustSoXpLocal;
+    undefined1* pfnAdjustSoNewXp;
+    undefined1* pfnAdjustSoXpVelocity;
+    undefined1* pfnAdjustSoDz;
+    undefined1* pfnAdjustSoXps;
+    undefined1* pfnUpdateSoInternalXps;
+    undefined1* pfnNotifySoImpact;
+    undefined1* pfnUpdateSoPivots;
+    undefined1* pfnUpdateSoImpacts;
+    undefined1* pfnUpdateSoPosWorldPrev;
+    undefined1* pfnGetPoCpdefi;
+    undefined1* pfnAddSoWaterAcceleration;
+    undefined1* pfnFInflictSoZap;
+    undefined1* pfnOnPoActive;
+    undefined1* pfnUpdatePoActive;
+    undefined1* pfnSetPoPlayable;
+    undefined1* pfnFIsPoSoundBase;
+    undefined1* pfnFInvulnerablePo;
+    undefined1* pfnFTakePoDamage;
+    undefined1* pfnJthsCurrentPo;
+    undefined1* pfnCollectPoPrize;
+    undefined1* pfnUsePoCharm;
+    undefined1* pfnGetPoDiapi;
+    undefined1* pfnPlayPoDialog;*/
+};
+
+extern VTPO g_vtpo;

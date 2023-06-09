@@ -1,6 +1,5 @@
 #pragma once
 #include <util.h>
-#include <chkpnt.h>
 
 enum class DPS
 {
@@ -24,14 +23,14 @@ struct DIFFICULTYLEVEL // made-up name
 	float field_0x24;
 	float field_0x28;
 	float uSuckCharmLow; // Suck threshold to get low charms
-	int ccharmLow; // Low charms count
+	int   ccharmLow; // Low charms count
 	float uSuckCharmHigh; // Suck threshold to get high charms
-	int ccharmHigh; // High charms count
+	int   ccharmHigh; // High charms count
 	float field_0x3c;
 	float field_0x40;
 	float field_0x44;
 	float field_0x48;
-	int field_0x4c; // Count of lives for something
+	int   field_0x4c; // Count of lives for something
 	float field_0x50;
 };
 
@@ -59,7 +58,7 @@ void OnDifficultyWorldPreLoad(DIFFICULTY* pdifficulty);
 void OnDifficultyWorldPostLoad(DIFFICULTY* pdifficulty);
 void OnDifficultyInitialTeleport(DIFFICULTY* pdifficulty);
 void OnDifficultyPlayerDeath(float scalar, DIFFICULTY* pdifficulty);
-void OnDifficultyTriggerCheckpoint(DIFFICULTY* pdifficulty, CHKPNT* pchkpnt);
+//void OnDifficultyTriggerCheckpoint(DIFFICULTY* pdifficulty, CHKPNT* pchkpnt);
 void OnDifficultyCollectKey(DIFFICULTY* pdifficulty);
 //void OnDifficultyAward(Difficulty* pdifficulty, int ccoinMin, int ccoinMax, Vector* ppos);
 //void OnDifficultyBreak(Difficulty* pdifficulty, VECTOR* ppos, int ccoin);

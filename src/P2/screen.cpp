@@ -17,3 +17,8 @@ void DrawBlots()
 	// todo
 	// ...
 }
+
+void DrawCtr(CTR* pctr)
+{
+	
+}

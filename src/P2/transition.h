@@ -1,16 +1,11 @@
 #pragma once
 #include <bis.h>
 #include <brx.h>
-#include <cat.h>
 #include <game.h>
-#include <gs.h>
-#include <difficulty.h>
 #include <clock.h>
 #include <joy.h>
 #include <phasemem.h>
-#include <prog.h>
 #include <sound.h>
-#include <sw.h>
 #include <iostream>
 
 typedef int GRFTRANS;
@@ -48,7 +43,7 @@ struct LevelTableStruct
 class CTransition
 {
 protected:
-    char *m_pchzWorld;      // This is the ptr to enc level sector offset and size in memory
+    char *m_pchzWorld;      // This is the ptr to level sector offset and size in memory
     OID   m_oidWarp;        // Which checkpoint you spawn at when you start a level
     OID   m_oidWarpContext; 
 
@@ -68,3 +63,4 @@ public:
 };
 
 static CTransition g_transition;
+static TRANS trans;
