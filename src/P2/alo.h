@@ -2,16 +2,16 @@
 #include <lo.h>
 
 struct ALO {
-    struct LO field0_0x0;
-    struct DL dlChild;
-    struct DLE dleBusy;
-    struct DLE dleMRD;
-    struct ALO* paloRoot;
+    //struct LO field0_0x0;
+    //struct DL dlChild;
+    //struct DLE dleBusy;
+    //struct DLE dleMRD;
+    //struct ALO* paloRoot;
     struct ALO* paloFreezeRoot;
-    struct DLE dleFreeze;
-    struct DL dlFreeze;
+    //struct DLE dleFreeze;
+    //struct DL dlFreeze;
     int cpmrg;
-    struct MRG* apmrg[4];
+    //MRG* apmrg[4];
     float sMRD;
     float sCelBorderMRD;
     int grfzon;
@@ -21,7 +21,7 @@ struct ALO {
     //struct VECTOR posOrig;
     //struct MATRIX3 matOrig;
     //struct VECTOR eulOrig;
-    struct DL dlAct;
+    //struct DL dlAct;
     struct ACT* pactPos;
     struct ACT* pactRot;
     struct ACT* pactScale;
@@ -38,22 +38,22 @@ struct ALO {
     struct SMPA* psmpaRot;
     struct ALOX* palox;
     int cframeStatic;
-    //struct GLOBSET globset;
-    struct SHADOW* pshadow;
-    struct THROB* pthrob;
+    //GLOBSET globset;
+    //SHADOW* pshadow;
+    //THROB* pthrob;
     float sFastShadowRadius;
     float sFastShadowDepth;
     int fRealClock;
-    struct FADER* pfader;
+    //FADER* pfader;
     float dtUpdatePause;
-    struct ASEGD* pasegd;
+    //ASEGD* pasegd;
     float sRadiusRenderSelf;
     float sRadiusRenderAll;
-    struct SFX* psfx;
-    //struct FICG ficg;
+    //SFX* psfx;
+    //FICG ficg;
     int cposec;
-    struct POSEC* aposec;
-    struct ACTREF* pactrefCombo;
-    struct DLR* pdlrFirst;
-    enum ACK ackRot;
+    //POSEC* aposec;
+    //ACTREF* pactrefCombo;
+    //DLR* pdlrFirst;
+    //ACK ackRot;
 };
