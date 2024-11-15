@@ -4,9 +4,9 @@
 [build-url]:https://github.com/TheOnlyZac/sly1/actions/workflows/build.yml
 [build-badge]: https://img.shields.io/github/actions/workflow/status/theonlyzac/sly1/build.yml?branch=main&label=build
 
-[code-progress-badge]: https://img.shields.io/endpoint?label=code&url=https%3A%2F%2Fprogress.deco.mp%2Fdata%2Fslycooper1%2Fus%2Fall%2F%3Fmode%3Dshield%26measure%3DP2
+[code-progress-badge]: https://img.shields.io/endpoint?label=progress&url=https%3A%2F%2Fprogress.deco.mp%2Fdata%2Fslycooper1%2Fus%2Fall%2F%3Fmode%3Dshield%26measure%3DP2
 
-[data-progress-badge]: https://img.shields.io/endpoint?label=data&url=https%3A%2F%2Fprogress.deco.mp%2Fdata%2Fslycooper1%2Fus%2Fall%2F%3Fmode%3Dshield%26measure%3Ddata
+<!--[data-progress-badge]: https://img.shields.io/endpoint?label=data&url=https%3A%2F%2Fprogress.deco.mp%2Fdata%2Fslycooper1%2Fus%2Fall%2F%3Fmode%3Dshield%26measure%3Ddata-->
 
 <!-- Contributors shield -->
 [contributors-url]: https://github.com/theonlyzac/sly1/graphs/contributors
@@ -18,14 +18,14 @@
 
 <!-- Docs shield -->
 [docs-url]: https://theonlyzac.github.io/sly1
-[docs-badge]: https://img.shields.io/badge/docs-doxygen-2C4AA8
+[docs-badge]: https://img.shields.io/badge/docs-github.io-2C4AA8
 
 <!-- Wiki shield -->
 [wiki-url]: https://slymods.info
 [wiki-badge]: https://img.shields.io/badge/wiki-slymods.info-2C4AA8
 
 <!-- Shields -->
-[![Build][build-badge]][build-url] ![code-progress-badge] ![data-progress-badge] [![Contributors][contributors-badge]][contributors-url] [![Discord Channel][discord-badge]][discord-url] [![Docs][docs-badge]][docs-url] [![Wiki][wiki-badge]][wiki-url]
+[![Build][build-badge]][build-url] ![code-progress-badge] <!--![data-progress-badge]--> [![Contributors][contributors-badge]][contributors-url] [![Discord Channel][discord-badge]][discord-url] [![Docs][docs-badge]][docs-url] [![Wiki][wiki-badge]][wiki-url]
 
 [<img src="logo.png" style="margin:7px" align="right" width="33%" alt="Sly 1 Decompilation Logo by Cooper941">][docs-url]
 
@@ -39,6 +39,10 @@ New contributors are welcome and encouraged to make a pull request! If you would
 
 ## Quickstart
 
+**1. Setup build environment.**
+
+Copy and paste this into your terminal:
+
 ```bash
 git clone https://github.com/theonlyzac/sly1 && \
 cd sly1 && \
@@ -46,9 +50,15 @@ pip install -U -r requirements.txt && \
 sudo ./scripts/setup_build_environment.sh
 ```
 
-Copy the `SCUS_971.98` file from your game disc to the `disc` directory of the project. Then build with:
+**2. Extract your original ELF file.**
 
-```
+Copy the file `SCUS_971.98` from your Sly 1 game disc to the `disc` directory of the project.
+
+**3. Build the project.**
+
+Run the build script with this command:
+
+```bash
 ./scripts/build.sh
 ```
 
@@ -62,16 +72,20 @@ If you have any issues, or you prefer to set up the project manually, follow the
 
 ## Manual Setup
 
-The project can be built on Linux, or Windows using WSL. Follow the instructions below to set up the build environment.
+The project can be built on Linux (or Windows using WSL). Follow the instructions below to set up the build environment.
 
-### Clone the repo
+### Clone the repository
 
-Clone the repository to your local machine:
+Clone the repo to your local machine:
 
 ```bash
 git clone https://github.com/TheOnlyZac/sly1
 cd sly1
 ```
+
+### Extract your original ELF file
+
+To build the project, you will need to extract the original ELF file from your own legally obtained copy of the game. Mount the disc on your PC and copy the file `SCUS_971.98` from your disc to the `disc` directory of this project.
 
 ### Install python packages
 
@@ -117,10 +131,6 @@ choco install 7zip
 .\scripts\setup-progd-windows.bat
 ```-->
 
-### Setup binary splitting
-
-To build the project you will need to extract the original ELF file from your own legally obtained copy of the game. Mount the disc on your PC and copy the file `SCUS_971.98` from your disc to the `disc` directory of this project.
-
 
 ### Build the project
 
@@ -131,7 +141,7 @@ python configure.py
 ninja
 ```
 
-If you update the config files, you will need run a clean reconfigure:
+If you update any config files or add any source files, you will need run a clean reconfigure:
 
 ```bash
 python configure.py --clean
@@ -158,10 +168,10 @@ The `run.sh` script in the `scripts` dir will automatically rebuild the executab
 To boot the elf in PCSX2 from the command line, use the following command:
 
 ```bash
-pcsx2-1.7.exe -elf ".../sly1/bin/debug/SCUS_971.98" "/path/to/game/backup.iso"
+pcsx2.exe -elf ".../sly1/bin/debug/SCUS_971.98" "/path/to/game/backup.iso"
 ```
 
-Replace `pcsx2-1.7.exe` with the path to your PCSX2 v1.7 executable (for Linux it will be an **.appimage** file).
+Replace `pcsx2.exe` with the path to your PCSX2 v2.0 executable (for Linux it will be an **.appimage** file).
 - The `-elf` parameter specifies the path to the SCUS_971.98 you built from this project. Replace `...` with the path to this repository. The emulator will use this ELF to boot the game.
 - The last argument is the path to your game ISO. Replace `/path/to/game/backup.iso` with the path to a backup of your own game disc. This is where the game will load the assets from.
 

@@ -146,7 +146,7 @@ struct GS
     GRFVAULT grfvault;        // Unlocked powerup flags
     unsigned int unlocked_cutscenes;
     unsigned int fgs;
-    int nPowerupLast; // Last selected powerup
+    int fspLast; // Last selected powerup
 };
 
 /**
@@ -224,6 +224,12 @@ struct GAME
     float dtChallenge;
     int cgoldLatest;
 };
+
+struct LevelLoadData
+{
+};
+
+extern const LevelLoadData *D_00247AB0[];
 
 /**
  * @brief Calls StartGame.

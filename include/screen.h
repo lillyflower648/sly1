@@ -50,11 +50,35 @@ struct BLOTI
     BLOTE blotePeg;
 };
 
+/**
+ * @brief User interface state.
+ */
+enum UIS
+{
+    UIS_Nil = -1,
+    UIS_Splash = 0,
+    UIS_Attract = 1,
+    UIS_Playing = 2,
+    UIS_Pausing = 3,
+    UIS_Paused = 4,
+    UIS_Unpausing = 5,
+    UIS_WorldMap = 6,
+    // todo What is 7?
+    UIS_Wiping = 8,
+    UIS_Max = 9
+};
+
 struct BLOT
 {
-    void *pvtblot;
+    union
+    {
+        VTBLOT *pvtblot;
+        VTNOTE *pvtnote;
+        VTBINOC *pvtbinoc;
+        VTTIMER *pvttimer;
+    };
     CFont *pfont;
-    char achzDraw[512];
+    undefined1 achzDraw[512];
     RGBA rgba;
     float rFontScale;
     CTextEdge *pte;
@@ -62,19 +86,18 @@ struct BLOT
     BLOTI *bloti;
     float x, y;
     float xOn, yOn;
-    float xOff, yOff;
     float dx, dy;
+    float width, height;
     float uOn;
     float dtAppear;
     float dtVisible;
     float dtDisappear;
-    float dtBlotsExtre;
+    float dtBlotsExtra;
     BLOTS blots;
     float tBlots;
     float *ptNow;
     int fActive;
 };
-
 
 // MARK: Timer
 
@@ -120,13 +143,29 @@ struct CTR : public BLOT
     void *pv;
 };
 
-struct TRUNKCTR : public CTR { };
-struct CRUSHERCTR : public CTR { };
-struct LIFECTR : public CTR { };
-struct CLUECTR : public CTR { };
-struct KEYCTR : public CTR { };
-struct COINCTR : public CTR { };
+struct TRUNKCTR : public CTR
+{
+};
+struct CRUSHERCTR : public CTR
+{
+};
+struct LIFECTR : public CTR
+{
+};
+struct CLUECTR : public CTR
+{
+};
+struct KEYCTR : public CTR
+{
+};
+struct COINCTR : public CTR
+{
+};
 
+extern LIFECTR g_lifectr;
+extern CLUECTR g_cluectr;
+extern KEYCTR g_keyctr;
+extern COINCTR g_coinctr;
 
 // MARK: Totals
 
@@ -142,8 +181,11 @@ extern TOTALS g_totals;
 
 struct NOTE : public BLOT
 {
-    // empty
+    undefined1 padding_0[24];
+    struct NOTE *unk278;
 };
+
+extern NOTE g_note;
 
 // MARK: Letterbox
 
@@ -189,6 +231,12 @@ class CTextEdge
     float m_ryScaling;
     RGBA m_rgba;
 };
+
+// Global blots
+extern LIFECTR g_lifectr;
+extern CLUECTR g_cluectr;
+extern KEYCTR g_keyctr;
+extern COINCTR g_coinctr;
 
 void StartupScreen();
 

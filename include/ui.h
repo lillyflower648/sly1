@@ -9,9 +9,20 @@
 #include "common.h"
 #include <screen.h>
 
-extern LIFECTR g_lifectr;
-extern CLUECTR g_cluectr;
-extern KEYCTR g_keyctr;
-extern COINCTR g_coinctr;
+/**
+ * @brief User interface.
+ *
+ * @note Roughly based on May proto, may be inaccurate.
+ */
+struct UI
+{
+    UIS uis;
+    float tUis;
+    BLOT *apblotActive;
+    int cpblotActive;
+    UIS uisPlaying;
+    float rvolMusicPrepause;
+    float rvolEffectsPrepause;
+};
 
 #endif // UI_H

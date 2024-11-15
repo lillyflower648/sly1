@@ -24,6 +24,13 @@ struct CLOCK
     TICK tickFrame;
 };
 
+extern float D_0024CD4C;
+
+extern float g_rtClock;
+extern float g_rtClockPowerUp;
+extern CLOCK g_clock;
+//extern TICK s_tickLastRaw;; // Should be static?
+
 /**
  * @brief Sets the rate of the global clock.
  *
